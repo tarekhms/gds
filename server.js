@@ -85,10 +85,11 @@ app.get('/favicon.png', sendPublicFile('favicon.png', 'png'));
 app.get(
   [
     '/796691243_122101763667465598_2605406461141275375_n.jpg',
-    '/796746076_122101763235465598_5836600542732663167_n.jpg'
+    '/796746076_122101763235465598_5836600542732663167_n.jpg',
+    '/796746076_122101763235465598_5836600542732663167_n.png'
   ],
   (req, res, next) => {
-    res.type('jpg');
+    res.type(path.extname(req.path).slice(1));
     res.sendFile(path.join(__dirname, path.basename(req.path)), (error) => {
       if (error) next(error);
     });
