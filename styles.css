@@ -1188,6 +1188,28 @@ p {
   color: var(--cyan);
 }
 
+.powered-by {
+  color: #9baabd;
+  font-size: 9px;
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+
+.powered-by:hover {
+  color: var(--white);
+}
+
+.powered-by-brand {
+  color: rgb(241 245 249 / 92%);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: -.04em;
+}
+
+.powered-by-accent {
+  color: #f03355;
+}
+
 @media (max-width: 920px) {
   .primary-navigation {
     gap: 21px;
@@ -1603,6 +1625,10 @@ p {
     gap: 6px;
     padding-top: 10px;
     padding-bottom: 10px;
+  }
+
+  .powered-by {
+    font-size: 10px;
   }
 }
 
