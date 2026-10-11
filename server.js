@@ -81,6 +81,7 @@ function sendPublicFile(fileName, contentType) {
 app.get('/', sendPublicFile('index.html', 'html'));
 app.get('/styles.css', sendPublicFile('styles.css', 'css'));
 app.get('/script.js', sendPublicFile('script.js', 'js'));
+app.get('/favicon.png', sendPublicFile('favicon.png', 'png'));
 app.get(
   [
     '/796691243_122101763667465598_2605406461141275375_n.jpg',

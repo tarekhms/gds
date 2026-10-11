@@ -98,7 +98,15 @@ img {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.brand-logo {
+  display: block;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .brand-mark {
@@ -1275,9 +1283,9 @@ p {
     min-height: 72px;
   }
 
-  .brand-mark {
-    width: 37px;
-    height: 37px;
+  .brand-logo {
+    width: 64px;
+    height: 64px;
   }
 
   .menu-toggle {
