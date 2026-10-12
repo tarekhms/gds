@@ -363,6 +363,13 @@ p {
   font-size: 17px;
 }
 
+.sparkle-symbol {
+  display: block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
 .hero-visual {
   position: relative;
   width: 100%;
