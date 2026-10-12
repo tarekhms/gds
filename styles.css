@@ -176,9 +176,23 @@ img {
   background: #f5f9ff;
 }
 
-.nav-cta span,
-.text-link span,
-.underlined-link span {
+.icon-arrow {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  vertical-align: middle;
+}
+
+.nav-cta .icon-arrow,
+.text-link .icon-arrow,
+.underlined-link .icon-arrow {
   color: var(--blue);
 }
 
@@ -320,8 +334,9 @@ p {
   background: #0d58be;
 }
 
-.button-primary span {
-  font-size: 17px;
+.button-primary .icon-arrow {
+  width: 17px;
+  height: 17px;
 }
 
 .text-link {
@@ -710,12 +725,11 @@ p {
   color: var(--white);
 }
 
-.service-card>a span {
+.service-card>a .icon-arrow {
   color: var(--blue);
-  font-size: 15px;
 }
 
-.service-card-featured>a span {
+.service-card-featured>a .icon-arrow {
   color: var(--cyan);
 }
 
@@ -758,7 +772,7 @@ p {
 }
 
 .gallery-card-large {
-  margin-top: 36px;
+  /* margin-top: 36px; */
 }
 
 .gallery-card-offset {
@@ -773,7 +787,7 @@ p {
 }
 
 .gallery-card-large img {
-  height: 310px;
+  /* height: 310px; */
 }
 
 .gallery-card:hover img {
@@ -800,7 +814,6 @@ p {
 
 .gallery-arrow {
   color: var(--blue);
-  font-size: 15px;
 }
 
 .service-area {
@@ -963,7 +976,7 @@ p {
   font-weight: 700;
 }
 
-.contact-details a>span:last-child[aria-hidden="true"] {
+.contact-details a>.icon-arrow {
   color: var(--cyan);
 }
 
@@ -1177,9 +1190,8 @@ p {
   transition: color .2s ease;
 }
 
-.back-to-top span {
+.back-to-top .icon-arrow {
   color: var(--cyan);
-  font-size: 16px;
 }
 
 .footer-bottom {
