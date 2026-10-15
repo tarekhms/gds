@@ -1,4 +1,5 @@
 const path = require('path');
+const crypto = require('crypto');
 const express = require('express');
 const nodemailer = require('nodemailer');
 
@@ -12,6 +13,9 @@ const smtpUser = String(process.env.BREVO_SMTP_USER || '').trim();
 const smtpKey = String(process.env.BREVO_SMTP_KEY || '').trim();
 const mailFrom = String(process.env.CONTACT_FROM || '').trim();
 const mailTo = String(process.env.CONTACT_TO || 'info@gdswindows.be').trim();
+const autoReplyEnabled = !['0', 'false', 'no', 'off'].includes(
+  String(process.env.AUTO_REPLY_ENABLED || '1').trim().toLowerCase()
+);
 const rateLimitWindowMs = 15 * 60 * 1000;
 const rateLimitMax = 5;
 const contactRequests = new Map();
@@ -147,6 +151,33 @@ app.post('/api/contact', async (req, res) => {
         message
       ].join('\n')
     });
+
+    if (autoReplyEnabled) {
+      const submissionRef = crypto.randomUUID().replace(/-/g, '').slice(0, 12);
+      try {
+        await transporter.sendMail({
+          from: { name: 'GDS Window Cleaning', address: mailFrom },
+          to: email,
+          replyTo: mailTo,
+          subject: `We hebben je bericht goed ontvangen (#${submissionRef})`,
+          text: [
+            `Hallo ${name},`,
+            '',
+            'Bedankt voor je bericht! We hebben het goed ontvangen en nemen zo snel mogelijk contact met je op.',
+            '',
+            'Met vriendelijke groeten,',
+            'GDS Window Cleaning',
+            'info@gdswindows.be'
+          ].join('\n'),
+          messageId: `<gds-autoreply-${submissionRef}@gdswindows.be>`,
+          headers: {
+            'X-GDS-Contact-Ref': submissionRef
+          }
+        });
+      } catch (error) {
+        console.warn('[contact] confirmation email failed:', error.message);
+      }
+    }
 
     res.json({ ok: true, message: 'Bedankt! Je bericht is verzonden. We nemen zo snel mogelijk contact met je op.' });
   } catch (error) {
