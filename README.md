@@ -6,13 +6,13 @@ the site and send contact form requests through Brevo SMTP.
 
 ## Configure email
 
-1. Create/verify `request@gds.be` as a sender in Brevo and authenticate the
-   `gds.be` domain using the DNS records Brevo provides.
+1. Create/verify `info@gdswindows.be` as a sender in Brevo and authenticate the
+   `gdswindows.be` domain using the DNS records Brevo provides.
 2. Copy `.env.example` to `.env`.
 3. Set `BREVO_SMTP_USER` and `BREVO_SMTP_KEY` using the SMTP credentials from
    Brevo. Do not use an API key or your Brevo account password.
 4. Set `CONTACT_FROM` to the verified sender and `CONTACT_TO` to
-   `request@gds.be`.
+   `info@gdswindows.be`.
 
 Keep `.env` private and never commit it.
 
@@ -35,7 +35,7 @@ load it into the systemd service with `EnvironmentFile`. Keep the Node process
 bound to `127.0.0.1` and proxy public HTTPS traffic through Nginx.
 
 The contact endpoint accepts `POST /api/contact`, limits each client to five
-submissions per 15 minutes, and emails form details to `request@gds.be`.
+submissions per 15 minutes, and emails form details to `info@gdswindows.be`.
 
 ## Content notes
 
