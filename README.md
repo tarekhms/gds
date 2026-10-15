@@ -13,8 +13,7 @@ the site and send contact form requests through Brevo SMTP.
    Brevo. Do not use an API key or your Brevo account password.
 4. Set `CONTACT_FROM` to the verified sender and `CONTACT_TO` to
    `info@gdswindows.be`.
-5. Optionally set `CONTACT_BCC` to receive a private copy of each notification.
-6. Automatic confirmations are enabled by default. Set `AUTO_REPLY_ENABLED=0`
+5. Automatic confirmations are enabled by default. Set `AUTO_REPLY_ENABLED=0`
    to disable them.
 
 Keep `.env` private and never commit it.

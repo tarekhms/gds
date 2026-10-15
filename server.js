@@ -13,7 +13,6 @@ const smtpUser = String(process.env.BREVO_SMTP_USER || '').trim();
 const smtpKey = String(process.env.BREVO_SMTP_KEY || '').trim();
 const mailFrom = String(process.env.CONTACT_FROM || '').trim();
 const mailTo = String(process.env.CONTACT_TO || 'info@gdswindows.be').trim();
-const mailBcc = String(process.env.CONTACT_BCC || '').trim();
 const autoReplyEnabled = !['0', 'false', 'no', 'off'].includes(
   String(process.env.AUTO_REPLY_ENABLED || '1').trim().toLowerCase()
 );
@@ -138,7 +137,6 @@ app.post('/api/contact', async (req, res) => {
     await transporter.sendMail({
       from: { name: 'GDS Window Cleaning', address: mailFrom },
       to: mailTo,
-      ...(mailBcc ? { bcc: mailBcc } : {}),
       replyTo: { name, address: email },
       subject: `Nieuwe aanvraag via de website — ${name}`,
       text: [
